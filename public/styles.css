@@ -1,0 +1,33 @@
+.row {
+    margin-top: 20px;
+}
+body {
+    background-color: #91A6C3;
+}
+.boats {
+}
+.boat {
+    height: 200px;
+    width: 280px;
+    background-color: #CDFAEF;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.boat:hover {
+    box-shadow: 0 0 7px #ffffff;
+}
+.model {
+    font-size: 20px;
+    font-weight: 600;
+}
+.not-found {
+    margin-left: 20px;
+}
+.btns {
+    display: none;
+}
+.boat:hover .btns {
+    display: inline-block;
+}
