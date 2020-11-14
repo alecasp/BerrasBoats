@@ -2,58 +2,72 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Berras Boatshop</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
-<div class="container-fluid">
-    <div class="row" style="margin-top:20px;">
-        <div class="col-12 col-md-12 form-inline">
-            <input type="hidden" id="txtId" value="0" />
-            <input type="text" class="form-control m-1" id="txtModel" placeholder="Model" />
-            <input type="number" class="form-control m-1" maxlength="4" min="0" id="txtYear" placeholder="Year" />
-            <input type="number" class="form-control m-1" min="0" id="txtPrice" placeholder="Price" />
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 20px">
+            <div class="col-12 col-md-12 form-inline">
+                <input type="hidden" id="txtId" value="0" />
+                <input type="text" class="form-control m-1" id="txtModel" placeholder="Model" />
+                <input type="number" class="form-control m-1" maxlength="4" min="0" id="txtYear" placeholder="Year" />
+                <input type="number" class="form-control m-1" min="0" id="txtPrice" placeholder="Price" />
 
-            <span style="margin-left:15px;">Is sail?</span>
-            <div class="form-check form-check-inline m-1">
-                <input class="form-check-input" type="radio" name="rdoSail" id="rdoSailYes" value="yes">
-                <label class="form-check-label" for="rdoSailYes">Yes</label>
+                <span style="margin-left: 15px">Is sail?</span>
+                <div class="form-check form-check-inline m-1">
+                    <input class="form-check-input" type="radio" name="rdoSail" id="rdoSailYes" value="yes" />
+                    <label class="form-check-label" for="rdoSailYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline m-1">
+                    <input class="form-check-input" type="radio" name="rdoSail" id="rdoSailNo" value="no" />
+                    <label class="form-check-label" for="rdoSailNo">No</label>
+                </div>
+
+                <span style="margin-left: 15px">Has motor?</span>
+                <div class="form-check form-check-inline m-1">
+                    <input class="form-check-input" type="radio" name="rdoMotor" id="rdoMotorYes" value="yes" />
+                    <label class="form-check-label" for="rdoMotorYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline m-1">
+                    <input class="form-check-input" type="radio" name="rdoMotor" id="rdoMotorNo" value="no" />
+                    <label class="form-check-label" for="rdoMotorNo">No</label>
+                </div>
+                <button class="btn btn-primary" id="btnSave" onclick="save();" style="margin-left: 15px">
+                    Save
+                </button>
+                <button class="btn btn-secondary" id="btnClear" onclick="clearForm();" style="margin-left: 15px">
+                    Clear
+                </button>
+                <button class="btn btn-warning" id="btnReset" onclick="reset();" style="margin-left: 15px">
+                    Reset Boatlist
+                </button>
             </div>
-            <div class="form-check form-check-inline m-1">
-                <input class="form-check-input" type="radio" name="rdoSail" id="rdoSailNo" value="no">
-                <label class="form-check-label" for="rdoSailNo">No</label>
+        </div>
+        <div class="row" style="margin-top: 20px">
+            <div class="col-12 col-md-12">
+                <input type="text" class="form-control" placeholder="Model" id="txtKeyword" />
             </div>
 
-            <span style="margin-left:15px;">Has motor?</span>
-            <div class="form-check form-check-inline m-1">
-                <input class="form-check-input" type="radio" name="rdoMotor" id="rdoMotorYes" value="yes">
-                <label class="form-check-label" for="rdoMotorYes">Yes</label>
+            <div class="col-12 col-md-12 mt-3">
+                <input type="text" class="form-control" placeholder="Price" id="txtMaxPrice" />
             </div>
-            <div class="form-check form-check-inline m-1">
-                <input class="form-check-input" type="radio" name="rdoMotor" id="rdoMotorNo" value="no">
-                <label class="form-check-label" for="rdoMotorNo">No</label>
+
+            <div class="col-12 col-md-12 mt-3">
+                <input type="button" class="btn btn-primary" value="Apply Filter" onclick="search()" />
             </div>
-            <button class="btn btn-primary" id="btnSave" onclick="save();" style="margin-left:15px;">Save</button>
-            <button class="btn btn-secondary" id="btnClear" onclick="clearForm();" style="margin-left:15px;">Clear</button>
-            <button class="btn btn-warning" id="btnReset" onclick="reset();" style="margin-left:15px;">Reset Boatlist</button>
+        </div>
+        <div class="row">
+            <div class="boats" id="boats"></div>
         </div>
     </div>
-    <div class="row" style="margin-top:20px;">
-        <div class="col-12 col-md-12">
-            <input type="text" class="form-control" placeholder="Search with model or price..." id="txtKeyword">
-        </div>
-    </div>
-    <div class="row">
-        <div class="boats" id="boats"></div>
-    </div>
-</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="./scripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./scripts.js"></script>
 </body>
 
 </html>
